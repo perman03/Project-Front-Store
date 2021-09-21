@@ -1,0 +1,305 @@
+/* CSS Y HTML CON METODOLOGIA BEM 
+
+
+/* CUSTOM PROPIERTIES - PROPIEDADES DE MODIFICACIONES */
+:root{
+    --primario: #9c27b0;
+    --primarioOscuro: #89119d;
+    --secundario: #ffce00;
+    --secundarioOscuro: rgb(233, 187, 2);
+    --blanco: #fff;
+    --negro: rgb(0,0,0);
+    --fuentePrincipal: 'Staatliches', cursive;
+}
+
+/* PROPIEDADES OBLIGATORIAS
+BOX MODEL (box-sizing), y 1rem = 10px (font-size: 62.5%) */
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+  }
+*, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+/* GLOBALES */
+body{
+    background-color: var(--primario);
+    font-size: 1.6rem;
+    line-height: 1.5;
+}
+
+p{
+    font-size: 1.8rem;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--blanco)
+}
+a{
+    text-decoration: none;
+}
+img{
+    max-width: 100%;
+
+}
+
+.contenedor{
+    max-width: 120rem;
+    margin: 0 auto; 
+}
+
+h1,h2,h3{
+    text-align: center;
+    color: var(--secundario);
+    font-family: var(--fuentePrincipal);
+
+}
+
+h1{
+    font-size: 4rem;
+}
+
+h2{
+    font-size: 3.2rem;
+}
+
+h3{
+    font-size: 2.4rem;
+}
+
+/* Header (logo) */
+.header{
+    display: flex;
+    justify-content: center;
+}
+.header__logo{
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    margin-left: 0;
+    margin-right: 0;
+}
+/* Footer config */
+.footer{
+    background-color: var(--primarioOscuro);
+    padding: 1rem 0;
+    margin-top: 2rem;
+}
+.footer__texto{
+    font-family: var(--fuentePrincipal);
+    text-align: center;
+}
+
+/* Navegación */
+.navegacion{
+    background-color: var(--primarioOscuro);
+    padding: 1rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;                               /*funcion nueva de flexbox que separa elementos*/
+}
+.navegacion__enlace{
+    font-family: var(--fuentePrincipal);
+    color: var(--blanco);
+    font-size: 3rem;
+                     
+}
+.navegacion__enlace--activo,               /*Clase para mantener activo el botón*/
+.navegacion__enlace:hover{
+    color: var(--secundario);
+}
+
+/* GRID - códidg para crear tienda virtual */
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;                                  /*separador entre elementos*/
+}
+ @media (min-width: 768px) {
+    .grid{
+        grid-template-columns: repeat(3, 1fr);
+    }
+} 
+
+/* Productos */
+
+.producto{
+    background-color: var(--primarioOscuro);
+    padding: 1rem;
+    
+}
+.producto__imagen{
+    width: 100%;
+
+}
+
+.producto__nombre{
+    font-size: 2.5rem;
+    font-family: var(--fuentePrincipal);
+}
+.producto__precio{
+    font-size: 2.5rem;
+    color: var(--secundario);
+}
+.producto__nombre,
+.producto__precio{
+    font-family: var(--fuentePrincipal);
+    margin: 1rem 0;
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* Gráficos */
+
+.grafico{
+    min-height: 30rem;
+    background-repeat: no-repeat;       /*Funcion para que las imagenes no se repitan*/
+    background-size: cover;             /*Funcion para que las imagenes tomen todo su lugar*/
+    grid-column: 1 /3;
+
+}
+.grafico--camisas{
+    grid-row: 2 / 3;
+   
+    background-image: url(img/grafico1.jpg);
+}
+.grafico--node{
+    background-image: url(img/grafico2.jpg);
+    
+    grid-row: 8 / 9;
+    
+    
+}
+@media (min-width: 768px) {
+    .grafico--node{
+        grid-row: 5 / 6;
+        grid-column: 2 / 4;
+    
+    }
+}
+
+/* Sobre nosotros */
+.nosotros{
+  display: grid;
+  grid-template-rows: repeat(2, auto);
+}
+
+@media (min-width: 768px) {
+    .nosotros{
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 2rem;
+      }
+}
+.nosotros__contenido{
+
+}
+.nosotros__imagen{
+    grid-row: 1 / 2;
+    width: 100%;
+}
+@media (min-width: 768px) {
+    .nosotros__imagen{
+        grid-column: 2 / 3;
+     
+    }
+}
+
+/* bloques de iconos */
+.bloques{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+@media (min-width: 768px) {
+    .bloques{
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+}
+.bloque{
+    text-align: center;
+}
+.bloque__titulo{
+    margin: 0;
+}
+.bloque__imagen{
+    width: 100%;
+}
+
+/* PRODUCTO */
+@media (min-width: 768px) {
+    .camisa{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+}
+.camisa__imagen{
+    width: 100%;
+}
+.formulario{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    
+}
+/* estilos a un select */
+.formulario__campo{
+    border: 1rem solid var(--primarioOscuro);                                     /* border: Ancho de borde - tipo de borde - color de borde*/
+    background-color: var(--primario);
+    color: var(--blanco);
+    font-size: 2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 1rem;
+}
+.formulario__submit{
+    background-color: var(--secundario);
+    border: none;
+    font-size: 2rem;
+    font-family: var(--fuentePrincipal);
+    padding: 2rem;
+    transition: background-color .3s ease;
+    grid-column: 1 / 3;
+}
+.formulario__submit:hover{
+    cursor: pointer;
+    background-color: var(--secundarioOscuro);
+}
+
+
+
+
+/* 
+CODIGO SUSTITUTO DEL GAP POR SI NO ES SOPORTADO:
+
+.navegacion__enlace{
+    font-family: var(--fuentePrincipal);
+    color: var(--blanco);
+    font-size: 3rem;
+    margin-right: 2rem;                      
+}
+.navegacion__enlace:last-of-type{
+    margin-right: 0;
+}
+---------------------------------------------------------------------------------------------------------------
+/* 
+Block Element Modifier: es una metodología para crear código re utilizable y ordenado en tus proyectos en CSS.
+
+Gracias a esto, se evita la colisión de nombres.
+
+-Reglas:
+
+1. Bloques: son un contenedor: si una sección por si sola es significativa, 
+y no requiere de otras secciones para su apariencia (CSS) deberá de ir en un bloque. 
+EJEMPLO: class="bloque"
+
+
+2. Elementos: parte de un bloque, depende del bloque y no es por si solo significativo. 
+Utiliza el nombre del bloque y después doble guion bajo.
+EJEMPLO: class="bloque__ejemplo"
+
+
+3. Modificadores: ¿Un bloque o elemento tendrá una variante? 
+Se utiliza un modificador que es una bandera que avisa que ese elemento tendrá diseño diferente.
+EJEMPLO: class="bloque__ejemplo--mod"
+
+*/
